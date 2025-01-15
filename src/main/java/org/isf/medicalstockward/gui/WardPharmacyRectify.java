@@ -538,7 +538,7 @@ public class WardPharmacyRectify extends JDialog {
 		JTextField lotNameTextField = new JTextField(15);
 		lotNameTextField.addAncestorListener(new RequestFocusListener());
 		TextPrompt suggestion = new TextPrompt(MessageBundle.getMessage("angal.medicalstock.multiplecharging.lotid"), lotNameTextField);
-		suggestion.setFont(new Font("Tahoma", Font.PLAIN, 14)); //$NON-NLS-1$
+		suggestion.setFont(FONT_PLAIN_14);
 		suggestion.setForeground(Color.GRAY);
 		suggestion.setHorizontalAlignment(SwingConstants.CENTER);
 		suggestion.changeAlpha(0.5f);
@@ -615,7 +615,6 @@ public class WardPharmacyRectify extends JDialog {
 
 	protected int askQuantity(Medical med) {
 		StringBuilder title = new StringBuilder(MessageBundle.getMessage("angal.common.quantity.txt"));
-		StringBuilder message = new StringBuilder(med.toString());
 		String prodCode = med.getProdCode();
 		if (prodCode != null && !prodCode.equals("")) {
 			title.append(' ').append(MessageBundle.getMessage("angal.common.code.txt")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -626,7 +625,7 @@ public class WardPharmacyRectify extends JDialog {
 		int qty = 0;
 		do {
 			String quantity = JOptionPane.showInputDialog(this,
-				message.toString(),
+				med.toString(),
 				title.toString(),
 				JOptionPane.QUESTION_MESSAGE);
 			if (quantity != null) {
